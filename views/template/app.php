@@ -18,10 +18,10 @@ require("dados.php");
             <div class="font-bold text-2xl">Book Wise</div>
             <ul class="flex space-x-4">
                 <li><a class="font-semibold hover:underline text-emerald-400" href="/">Explorar</a></li>
-                <li><a class="font-semibold hover:underline" href="/meus-livros.php">Meus Livros</a></li>
+                <li><a class="font-semibold hover:underline" href="/meus-livros">Meus Livros</a></li>
             </ul>
             <ul>
-                <li><a class="font-semibold hover:underline" href="/login.php">Fazer Login</a></li>
+                <li><a class="font-semibold hover:underline" href="/login">Fazer Login</a></li>
             </ul>
         </nav>
     </header>

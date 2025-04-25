@@ -8,4 +8,6 @@ $livroFiltrado = array_filter($livros, function ($l) use ($id) {
 });
 
 $livro = array_pop($livroFiltrado);
-view("livro");
+view("livro", [
+    "livro" => $livro
+]);
