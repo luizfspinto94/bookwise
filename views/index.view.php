@@ -20,7 +20,7 @@
                     IMAGEM
                 </div>
                 <div>
-                    <a class="font-semibold" href="/livro.php?id=<?= $livro["id"]; ?>">
+                    <a class="font-semibold" href="/livro?id=<?= $livro["id"]; ?>">
                         <?= $livro["titulo"]; ?>
                     </a>
                     <div class="italic"><?= $livro["autor"]; ?></div>

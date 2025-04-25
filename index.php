@@ -1,6 +1,6 @@
 <?php
 require("dados.php");
+require("functions.php");
+require("routes.php");
 
-$view = "index";
-require("views/template/app.php");
 ?>
