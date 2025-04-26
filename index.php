@@ -2,7 +2,6 @@
 
 require("functions.php");
 require("models/Livro.php");
-require("Database.php"); 
+$config = require("config.php");
+require("Database.php");
 require("routes.php");
-
-?>

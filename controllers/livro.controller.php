@@ -1,8 +1,12 @@
 <?php
 
 $id = $_REQUEST["id"];
-$db = new Database();
-$livro = $db->livro($id);
+
+$livro = $database->query(
+    query: "select * from livros where id = :id",
+    class: Livro::class,
+    params: ["id" => $id]
+)->fetch();
 
 view("livro", [
     "livro" => $livro
