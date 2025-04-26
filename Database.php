@@ -8,9 +8,11 @@ class Database {
         $this->db = new PDO("sqlite:database.sqlite");
     }
 
-    public function livros() {
-        $query = $this->db->query("select * from livros");
-        $items = $query->fetchAll();
+    public function livros($pesquisar = null) {
+        $prepare = $this->db->prepare("select * from livros where titulo like :pesquisar or autor like :pesquisar");
+        $prepare->bindValue("pesquisar", "%$pesquisar%");
+        $prepare->execute();
+        $items = $prepare->fetchAll();
         return array_map(fn($item) => Livro::make($item), $items);
     }
 
