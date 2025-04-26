@@ -2,7 +2,7 @@
     <h1 class="text-2xl font-bold">Explorar</h1>
     <form action="">
         <input
-            class="bg-transparent border border-zinc-800 py-2 px-2 rounded-md"
+            class="bg-transparent border border-zinc-800 py-2 px-2 rounded-md outline-none"
             type="text"
             name="pesquisar"
             id="pesquisar"
@@ -24,7 +24,9 @@
                         <?= $livro["titulo"]; ?>
                     </a>
                     <div class="italic"><?= $livro["autor"]; ?></div>
+                    <!--
                     <div><?= $livro["avaliacao"]; ?></div>
+                    -->
                 </div>
             </div>
             <div class="mt-4">
