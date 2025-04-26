@@ -1,12 +1,9 @@
 <?php
 
 $id = $_REQUEST["id"];
+$db = new Database();
+$livro = $db->livro($id);
 
-$livroFiltrado = array_filter($livros, function ($l) use ($id) {
-    return $l["id"] == $id;
-});
-
-$livro = array_pop($livroFiltrado);
 view("livro", [
     "livro" => $livro
 ]);

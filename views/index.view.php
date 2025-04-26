@@ -20,17 +20,14 @@
                     IMAGEM
                 </div>
                 <div>
-                    <a class="font-semibold" href="/livro?id=<?= $livro["id"]; ?>">
-                        <?= $livro["titulo"]; ?>
+                    <a class="font-semibold" href="/livro?id=<?= $livro->id; ?>">
+                        <?= $livro->titulo; ?>
                     </a>
-                    <div class="italic"><?= $livro["autor"]; ?></div>
-                    <!--
-                    <div><?= $livro["avaliacao"]; ?></div>
-                    -->
+                    <div class="italic"><?= $livro->autor; ?></div>
                 </div>
             </div>
             <div class="mt-4">
-                <?= $livro["descricao"]; ?>
+                <?= $livro->descricao; ?>
             </div>
         </div>
     <?php endforeach; ?>
