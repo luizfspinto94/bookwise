@@ -7,7 +7,7 @@
             name="pesquisar"
             id="pesquisar"
             placeholder="Pesquisar...">
-        <button class="bg-emerald-500 border border-emerald-600 py-2 px-2 rounded-md">
+        <button class="bg-emerald-600 border border-emerald-600 py-2 px-2 rounded-md hover:bg-emerald-700 font-semibold">
             Pesquisar
         </button>
     </form>
