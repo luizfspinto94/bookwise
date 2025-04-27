@@ -1,8 +1,9 @@
-<?php if (isset($mensagem)) : ?>
-    <div class="mx-auto w-4/12 border border-emerald-700 p-4 mt-8 rounded-md text-emerald-400">
-        <?= $mensagem ?>
+<?php if (isset($mensagem) && strlen($mensagem) > 0) : ?>
+    <div class="mx-auto w-4/12 border border-emerald-600 p-3 mt-8 rounded-md text-emerald-400 flex justify-between gap-3 items-center">
+        <?= $mensagem ?> <span class="text-xs">✅</span>
     </div>
 <?php endif; ?>
+
 <div class="mx-auto w-4/12 border border-zinc-700 p-4 mt-8 rounded-md">
     <form action="" method="" class="p-6">
         <h1 class="mb-4 font-bold text-xl">Acessar minha conta</h1>
