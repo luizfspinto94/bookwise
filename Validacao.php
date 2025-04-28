@@ -37,12 +37,32 @@ class Validacao
             $this->validacoes[] = "{$campo} deve ter no minimo 4 caracteres";
         }
     }
+
+    private function unique($campo, $valor) {
+        $database = new Database(config("database"));
+
+        $resultado = $database->query(
+            query: "select * from usuarios where email = :email",
+            params: [
+                "email" => $valor
+            ]
+        )->fetch();
+
+        if($resultado) {
+            $this->validacoes[] = "{$campo} já está sendo usado";
+        }
+    }
     
     public function naoPassou($nomeCustomizado = null) {
         $valor = "validacoes";
         if($nomeCustomizado) {
             $valor .= "_$nomeCustomizado";
         }
-        flash()->push($valor, $this->validacoes);
+
+        if(sizeof($this->validacoes) > 0) {
+            flash()->push($valor, $this->validacoes);
+        }
+
+        return true;
     }
 }
