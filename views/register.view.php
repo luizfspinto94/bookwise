@@ -1,7 +1,7 @@
-<?php if (isset($_SESSION["validacoes"]) && sizeof($_SESSION["validacoes"])) : ?>
+<?php if ($validacoes = flash()->get("validacoes_registrar")) : ?>
     <div class="mx-auto w-4/12 border border-yellow-600 p-3 mt-8 rounded-md text-yellow-400">
         <ul>
-            <?php foreach ($_SESSION["validacoes"] as  $validacao): ?>
+            <?php foreach ($validacoes as  $validacao): ?>
                 <li class="flex justify-between gap-3 items-center">
                     <?= $validacao ?> <span class="text-xs">⚠️</span>
                 </li>

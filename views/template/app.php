@@ -16,9 +16,15 @@
                 <li><a class="font-semibold hover:underline text-emerald-400" href="/">Explorar</a></li>
                 <li><a class="font-semibold hover:underline" href="/meus-livros">Meus Livros</a></li>
             </ul>
-            <ul>
-                <li><a class="font-semibold hover:underline" href="/login">Fazer Login</a></li>
-            </ul>
+            <?php if(isset($_SESSION["auth"])): ?>
+                <a href="/logout" title="Fazer logout">
+                    Olá, <?= $_SESSION["auth"]->nome; ?>
+                </a>
+            <?php else: ?>
+                <ul>
+                    <li><a title="Fazer login" class="font-semibold hover:underline" href="/login">Fazer Login</a></li>
+                </ul>
+            <?php endif; ?>
         </nav>
     </header>
     <main class="mx-auto max-w-screen-xl py-6 px-8">

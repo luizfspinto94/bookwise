@@ -22,3 +22,7 @@ function abort($code)
     echo "O servidor não conseguiu encontrar o recurso solicitado";
     die();
 }
+
+function flash() {
+    return new Flash();
+}

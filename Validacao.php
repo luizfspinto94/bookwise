@@ -33,24 +33,16 @@ class Validacao
 
     private function senha($campo, $valor)
     {
-        if (!strlen($valor) < 4 || strlen($valor) > 8) {
-            $this->validacoes[] = "{$campo} deve conter entre 4 a 8 caracteres";
+        if (strlen($valor) < 4) {
+            $this->validacoes[] = "{$campo} deve ter no minimo 4 caracteres";
         }
     }
-
-    /*
-    if(strlen($senha) == 0) {
-        $validacoes[] = "Senha é obrigatório";
-    }
-
-    if(strlen($senha) < 4 || strlen($senha) > 8) {
-        $validacoes[] = "Senha deve ter entre 4 a 8 caracteres";
-    }
-    */
-
-    public function naoPassou() {
-        if(sizeof($this->validacoes) > 0) {
-            return $_SESSION["validacoes"] = $this->validacoes;
+    
+    public function naoPassou($nomeCustomizado = null) {
+        $valor = "validacoes";
+        if($nomeCustomizado) {
+            $valor .= "_$nomeCustomizado";
         }
+        flash()->push($valor, $this->validacoes);
     }
 }

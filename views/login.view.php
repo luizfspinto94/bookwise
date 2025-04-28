@@ -1,11 +1,23 @@
-<?php if (isset($mensagem) && strlen($mensagem) > 0) : ?>
+<?php if ($mensagem = flash()->get("mensagem")) : ?>
     <div class="mx-auto w-4/12 border border-emerald-600 p-3 mt-8 rounded-md text-emerald-400 flex justify-between gap-3 items-center">
         <?= $mensagem ?> <span class="text-xs">✅</span>
     </div>
 <?php endif; ?>
 
+<?php if ($validacoes = flash()->get("validacoes_login")) : ?>
+    <div class="mx-auto w-4/12 border border-yellow-600 p-3 mt-8 rounded-md text-yellow-400">
+        <ul>
+            <?php foreach ($validacoes as $validacao): ?>
+                <li class="flex justify-between gap-3 items-center">
+                    <?= $validacao ?> <span class="text-xs">⚠️</span>
+                </li>
+            <?php endforeach; ?>
+        </ul>
+    </div>
+<?php endif; ?>
+
 <div class="mx-auto w-4/12 border border-zinc-700 p-4 mt-8 rounded-md">
-    <form action="" method="" class="p-6">
+    <form action="/login" method="POST" class="p-6">
         <h1 class="mb-4 font-bold text-xl">Acessar minha conta</h1>
         <div class="space-y-4">
             <div>
@@ -27,7 +39,7 @@
                     placeholder="Informe sua senha">
             </div>
             <div>
-                <button class="bg-emerald-600 border border-emerald-600 py-2 px-2 rounded-md w-full font-semibold hover:bg-emerald-700">
+                <button type="submit" class="bg-emerald-600 border border-emerald-600 py-2 px-2 rounded-md w-full font-semibold hover:bg-emerald-700">
                     Acessar minha conta
                 </button>
             </div>

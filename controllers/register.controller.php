@@ -11,13 +11,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         "senha" => ["required", "senha"]
     ], $_POST);
 
-    if($validacao->naoPassou()) {
+    if($validacao->naoPassou("registrar")) {
         view("register");
         exit();
     }
     
     $database->query(
         query: "INSERT INTO usuarios(nome, email, senha) VALUES(:nome, :email, :senha)",
+        class: Usuario::class,
         params: [
             "nome" => $_POST["nome"],
             "email" => $_POST["email"],
@@ -25,7 +26,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         ]
     );
 
-    header("Location:/login?mensagem=Usuario cadastrado com sucesso");
+    flash()->push("mensagem", "Usuario cadastrado com sucesso");
+    header("Location:/login");
 }
 
 view("register");
