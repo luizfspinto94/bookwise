@@ -36,3 +36,12 @@ function config($chave = null) {
 
     return $config;
 }
+
+
+function auth() {
+    if(! $_SESSION["auth"]) {
+        return null;
+    }
+
+    return $_SESSION["auth"];
+}

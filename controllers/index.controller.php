@@ -1,5 +1,10 @@
 <?php
 
+//se não tiver autenticado, vai para login.
+if(! auth()) {
+    header("Location: /login");
+}
+
 $pesquisar = $_REQUEST["pesquisar"] ?? "";
 
 $livros = $database->query(

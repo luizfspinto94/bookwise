@@ -11,14 +11,14 @@
 <body class="bg-stone-900 text-white">
     <header class="bg-stone-800">
         <nav class="mx-auto max-w-screen-xl flex justify-between items-center py-6 px-8">
-            <div class="font-bold text-2xl">Book Wise</div>
+            <div class="font-bold text-2xl">Book Wise 📖</div>
             <ul class="flex space-x-4">
                 <li><a class="font-semibold hover:underline text-emerald-400" href="/">Explorar</a></li>
                 <li><a class="font-semibold hover:underline" href="/meus-livros">Meus Livros</a></li>
             </ul>
-            <?php if(isset($_SESSION["auth"])): ?>
+            <?php if(auth()): ?>
                 <a href="/logout" title="Fazer logout">
-                    Olá, <?= $_SESSION["auth"]->nome; ?>
+                    Olá, <?= auth()->nome; ?>
                 </a>
             <?php else: ?>
                 <ul>

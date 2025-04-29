@@ -2,7 +2,7 @@
 
 class Validacao
 {
-    public $validacoes;
+    public $validacoes = [];
 
     public static function validar($regras, $dados)
     {
@@ -55,14 +55,12 @@ class Validacao
     
     public function naoPassou($nomeCustomizado = null) {
         $valor = "validacoes";
+
         if($nomeCustomizado) {
-            $valor .= "_$nomeCustomizado";
+            $valor .= "_" . $nomeCustomizado;
         }
 
-        if(sizeof($this->validacoes) > 0) {
-            flash()->push($valor, $this->validacoes);
-        }
-
-        return true;
+        flash()->push($valor, $this->validacoes);
+        return sizeof($this->validacoes) > 0;
     }
 }

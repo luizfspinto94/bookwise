@@ -9,24 +9,29 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         "senha" => ["required"]
     ], $_POST);
 
-    if($validacao->naoPassou("login")) {
+    if ($validacao->naoPassou("login")) {
         view("login");
         exit();
     }
 
     $usuario = $database->query(
-        query: "select * from usuarios where email = :email and senha = :senha",
+        query: "select * from usuarios where email = :email",
         class: Usuario::class,
         params: [
-            "email" => $email,
-            "senha" => $senha
+            "email" => $email
         ]
     )->fetch();
 
-    if($usuario) {
-        $_SESSION["auth"] = $usuario;
-        header("Location:/");
+    if ($usuario) {
+        if (! password_verify($senha, $usuario->senha)) {
+            flash()->push("validacoes_login", ["usuario ou senha incorretos"]);
+            header("Location: /login");
+            exit();
+        }
     }
+
+    $_SESSION["auth"] = $usuario;
+    header("Location:/");
 }
 
 view("login");

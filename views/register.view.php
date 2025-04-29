@@ -12,7 +12,7 @@
 
 <div class="mx-auto w-4/12 border border-zinc-700 p-4 mt-8 rounded-md">
     <form action="/register" method="POST" class="p-6">
-        <h1 class="mb-4 font-bold text-xl">Criar minha conta</h1>
+        <h1 class="mb-4 font-bold text-xl">Olá, crie a sua conta agora</h1>
         <div class="space-y-4">
         <div>
                 <label class="block mb-2" for="nome">Nome</label>
@@ -43,7 +43,7 @@
             </div>
             <div>
             <button type="submit" class="bg-emerald-600 border border-emerald-600 py-2 px-2 rounded-md w-full font-semibold hover:bg-emerald-700">
-            Criar minha conta
+            Criar Conta
             </button>
             </div>
         </div>
