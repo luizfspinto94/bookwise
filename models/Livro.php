@@ -7,4 +7,5 @@ class Livro
     public $autor;
     public $descricao;
     public $usuario_id;
+    public $imagens;
 }

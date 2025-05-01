@@ -2,7 +2,7 @@
 return [
     "database" => [
         "driver" => "sqlite",
-        "database" => "database.sqlite"
+        "database" => "../database.sqlite"
 
         /*
         "driver" => "mysql",

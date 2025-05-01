@@ -5,7 +5,15 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
     $autor = $_POST["autor"];
     $descricao = $_POST["descricao"];
     $usuario_id = auth()->id;
-    
+
+    $dir = "images/";
+    $arquivo = $dir . basename($_FILES["imagem"]["name"]);
+
+    $novoNome = md5(rand());
+    $extensao = pathinfo($arquivo, PATHINFO_EXTENSION);
+    $imagem = $dir . $novoNome . '.' . $extensao;
+    move_uploaded_file($_FILES["imagem"]["tmp_name"], $imagem);
+
     $validacao = Validacao::validar([
         "titulo" => ["required"],
         "autor" => ["required"],
@@ -18,13 +26,14 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     $database->query(
-        query: "INSERT INTO livros(titulo, autor, descricao, usuario_id) VALUES(:titulo, :autor, :descricao, :usuario_id)",
+        query: "INSERT INTO livros(titulo, autor, descricao, usuario_id, imagens) VALUES(:titulo, :autor, :descricao, :usuario_id, :imagens)",
         class: Livro::class,
         params: [
             "titulo" => $titulo,
             "autor" => $autor,
             "descricao" => $descricao,
-            "usuario_id" => $usuario_id
+            "usuario_id" => $usuario_id,
+            "imagens" => $imagem
         ]
     );
 

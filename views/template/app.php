@@ -31,7 +31,7 @@
         </nav>
     </header>
     <main class="mx-auto max-w-screen-xl py-6 px-8">
-        <?php require("views/{$view}.view.php"); ?>
+        <?php require("../views/{$view}.view.php"); ?>
     </main>
 </body>
 
