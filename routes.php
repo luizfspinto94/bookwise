@@ -8,3 +8,4 @@ if (! file_exists("controllers/{$controller}.controller.php")) {
 }
 
 require("controllers/{$controller}.controller.php");
+

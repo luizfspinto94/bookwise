@@ -3,22 +3,8 @@
 /** @var Livro $livro */
 ?>
 
-<div class="p-4 bg-transparent rounded-md hover:bg-zinc-800 border border-zinc-700">
-    <div class="flex gap-4">
-        <div class="w-1/3">
-            IMAGEM
-        </div>
-        <div>
-            <a class="font-semibold" href="/livro?id=<?= $livro->id; ?>">
-                Titulo
-            </a>
-            <div class="italic"><?= $livro->autor; ?></div>
-        </div>
-    </div>
-    <div class="mt-4">
-        <?= $livro->descricao; ?>
-    </div>
-</div>
+<?php require("partials/_livro.php"); ?>
+
 
 <?php if ($mensagem = flash()->get("mensagem")) : ?>
     <div class="w-4/12 border border-emerald-600 p-3 mt-8 rounded-md text-emerald-400 flex justify-between gap-3 items-center">
@@ -39,16 +25,23 @@
 <?php endif; ?>
 
 
-<div class="grid grid-cols-2 gap-4 mt-12">
-    <!-- Lista de Avaliações (ocupa mais espaço) -->
-    <div class="col-span-1 flex-1">
-        <div class="border border-zinc-700 p-4 rounded-md space-y-4">
-            <h1 class="text-xl font-bold">skdksmdkmskdms</h1>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore ipsam sed corrupti expedita quam accusantium iure asperiores provident ipsa sequi praesentium corporis, nemo fugiat odit sit eveniet rem quae laboriosam?</p>
+<div class="grid grid-cols-2 gap-4 mt-6">
+    <div class="col-span-1 grid gap-4">
+        <?php if($avaliacoes): ?>
+        <?php foreach ($avaliacoes as $avaliacao): ?>
+        <div class="col-span-1 flex-1">
+            <div class="border border-zinc-700 p-4 rounded-md space-y-4">
+                <h1 class="text-xl font-bold">Avaliacão Livro: <?= $livro->titulo; ?></h1>
+                <p><?= $avaliacao->avaliacao; ?></p>
+                <p><?= $avaliacao->nota; ?></p>
+            </div>
         </div>
+        <?php endforeach; ?>
+        <?php else: ?>
+            <div>Não há nenhuma avaliação criada ainda para este livro!</div>
+        <?php endif; ?>
     </div>
 
-    <!-- Formulário (máximo 400px de largura, alinhado à direita) -->
     <div class="col-span-1 w-[450px] ml-auto border border-zinc-700 p-4 rounded-md">
         <form action="/avaliacao-criar" method="POST" class="space-y-4">
             <h2 class="text-lg font-semibold mb-2">Deixe sua avaliação sobre o Livro 📚</h2>

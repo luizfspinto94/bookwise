@@ -14,21 +14,6 @@
 </div>
 <section class="grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mx-auto max-w-screen-xl py-6">
     <?php foreach ($livros as $livro): ?>
-        <div class="p-4 bg-transparent rounded-md hover:bg-zinc-800 border border-zinc-700">
-            <div class="flex gap-4">
-                <div class="w-1/3">
-                    IMAGEM
-                </div>
-                <div>
-                    <a class="font-semibold" href="/livro?id=<?= $livro->id; ?>">
-                        <?= $livro->titulo; ?>
-                    </a>
-                    <div class="italic"><?= $livro->autor; ?></div>
-                </div>
-            </div>
-            <div class="mt-4">
-                <?= $livro->descricao; ?>
-            </div>
-        </div>
+        <?php require("partials/_livro.php"); ?>
     <?php endforeach; ?>
 </section>

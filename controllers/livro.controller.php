@@ -8,6 +8,16 @@ $livro = $database->query(
     params: ["id" => $id]
 )->fetch();
 
+$avaliacoes = $database->query(
+    query: "select * from avaliacoes where livro_id = :livro_id",
+    class: Avaliacao::class,
+    params: [
+        "livro_id" => $id
+    ]
+)->fetchAll();
+
+
 view("livro", [
-    "livro" => $livro
+    "livro" => $livro,
+    "avaliacoes" => $avaliacoes
 ]);
