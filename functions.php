@@ -39,7 +39,7 @@ function config($chave = null) {
 
 
 function auth() {
-    if(! $_SESSION["auth"]) {
+    if(! isset($_SESSION["auth"])) {
         return null;
     }
 
